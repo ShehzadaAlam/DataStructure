@@ -8,8 +8,26 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self, nodes=None):
         self.head = None
+        if nodes is not None:
+            node = Node(data=nodes.pop(0))
+            self.head = node
+            for elem in nodes:
+                node.next = Node(data=elem)
+                node = node.next
+
+    def add_first(self, node):
+        node.next = self.head
+        self.head = node
+
+    def add_last(self, node):
+        if not self.head:
+            self.head = node
+            return
+        for current_node in self:
+            pass
+        current_node.next = node
 
     def __iter__(self):
         node = self.head
@@ -25,3 +43,4 @@ class LinkedList:
             node = node.next
         nodes.append("None")
         return " -> ".join(nodes)
+
