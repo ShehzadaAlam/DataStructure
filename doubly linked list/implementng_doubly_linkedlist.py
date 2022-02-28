@@ -7,12 +7,18 @@ print(len(dll))
 
 dll.add_first(Node("pineapple"))
 print(dll)
-# print(dll.head.next.next)
 
 dll.add_last(Node("banana"))
 print(dll)
 
-# dll.add_after("raspberry", Node("fig"))
-# print(dll)
-# print(dll.head.next.next.next.previous)
+dll.add_after("raspberry", Node("fig"))
+print(dll)
 
+dll.add_before("banana", Node("papaya"))
+print(dll)
+
+dll.add_before("pineapple", Node("watermelon"))
+print(dll)
+
+dll.remove_node("raspberry")
+print(dll)

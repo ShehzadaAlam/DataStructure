@@ -4,6 +4,9 @@ class Node:
         self.next = None
         self.previous = None
 
+    def __repr__(self):
+        return self.data
+
 
 class DoublyLinkedList:
     def __init__(self, data_node):
@@ -32,6 +35,47 @@ class DoublyLinkedList:
             pass
         current_node.next = node
         node.previous = current_node
+
+    def add_after(self, target_node_data, node):
+        if not self.head:
+            raise Exception("List is currently empty")
+        for current_node in self:
+            if current_node.data == target_node_data:
+                node.next = current_node.next
+                current_node.next = node
+                node.previous = current_node
+                return
+        raise Exception("Target node is not found")
+
+    def add_before(self, target_data_node, node):
+        if not self.head:
+            raise Exception("list is currently empty")
+        if self.head.data == target_data_node:
+            self.add_first(node)
+            return
+
+        for current_node in self:
+            if current_node.data == target_data_node:
+                node.next = current_node
+                node.previous = current_node.previous
+                current_node.previous.next = node
+                current_node.previous = node
+                return
+        raise Exception("Target node is not found")
+
+    def remove_node(self, node_data):
+        if not self.head:
+            raise Exception("list is currently empty")
+        if self.head.data == node_data:
+            self.head = self.head.next
+            self.head.previous = None
+            return
+        for current_node in self:
+            if current_node.data == node_data:
+                current_node.previous.next = current_node.next
+                current_node.next.previous = current_node.previous
+                return
+        raise Exception("Target node is not found")
 
     def __iter__(self):
         node = self.head
