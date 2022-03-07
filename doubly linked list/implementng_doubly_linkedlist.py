@@ -20,5 +20,5 @@ print(dll)
 dll.add_before("pineapple", Node("watermelon"))
 print(dll)
 
-dll.remove_node("raspberry")
+dll.remove_node("banana")
 print(dll)

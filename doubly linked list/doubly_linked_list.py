@@ -68,11 +68,11 @@ class DoublyLinkedList:
             raise Exception("list is currently empty")
         if self.head.data == node_data:
             self.head = self.head.next
-            self.head.previous = None
             return
         for current_node in self:
-            if current_node.data == node_data:
+            if current_node.data == node_data and current_node.next is not None:
                 current_node.previous.next = current_node.next
+            elif current_node.data == node_data and current_node.prev is not None:
                 current_node.next.previous = current_node.previous
                 return
         raise Exception("Target node is not found")
