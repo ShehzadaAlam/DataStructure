@@ -13,4 +13,5 @@ def find_sum(strarray, target):
 
 
 print(find_sum(strarray, target))
+print("-------")
 
